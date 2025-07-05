@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Resources\ClientResource;
 use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -106,8 +107,9 @@ class AdminPanelProvider extends PanelProvider
                     ->shouldShowBrowserSessionsForm()
                     ->shouldShowAvatarForm(),
             ])
-            ->resources([
+            ->resources([   
                 config('filament-logger.activity_resource'),
+                ClientResource::class,
             ])
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->middleware([
